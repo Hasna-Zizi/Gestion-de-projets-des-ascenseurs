@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<h:head>
+     <link rel="stylesheet" href="../csss/bootstrap.min.css"/>
+     <link rel="stylesheet" href="../csss/bootstrap.css"/>
+     <link rel="stylesheet" href="../csss/style1.css"/>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+     <meta charset="utf-8"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta name="description" content=""/>
+     <meta name="author" content="Dashboard"/>
+     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"/>
+     <title>GESTION--PROJET</title>
+     <link href="img/favicon.png" rel="icon"/>
+     <link href="img/apple-touch-icon.png" rel="apple-touch-icon"/>
+     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+     <link href="css/style.css" rel="stylesheet"/>
+     <link href="css/style-responsive.css" rel="stylesheet"/>
+     
+     
+</h:head>
+
+<body>
+   <div id="login-page">
+    <div class="container">
+      <h:form class="form-login" action="index.html">
+      
+        <h2 class="form-login-heading" style="background: #2f323a;">CONNEXION</h2>
+        <br/>
+       <div class="card-body">
+        <h:messages globalOnly="true" style="margin-bottom: 20px;
+          background: #ffa500;
+          color:#fdfdfd;
+          padding: 10px;
+          text-align: center;
+          font-size: 14px;
+          transition: all 0.5s ease;
+          margin-left: 25px;
+          margin-right:25px; " ></h:messages>
+          <h:messages for="name" style="margin-bottom: 20px;
+          background: #df2424;
+          color:#fdfdfd;
+          padding: 10px;
+          text-align: center;
+          font-size: 14px;
+          transition: all 0.5s ease;
+          margin-left: 25px;
+          margin-right:25px;" />
+           <h:messages for="pass" style="margin-bottom: 20px;
+          background: #df2424;
+          color:#fdfdfd;
+          padding: 10px;
+          text-align: center;
+          font-size: 14px;
+          transition: all 0.5s ease;
+          margin-left: 25px;
+          margin-right:25px;" /></div>
+        <div class="login-wrap">
+        <p:inputText id="name" a:placeholder="Nom d'utilisateur" value="#{user.username}" styleClass="form-control" required="true" requiredMessage="Le Nom d'utilisateur est nécessaire"></p:inputText>
+          
+         <br/>
+      <p:password id="pass" a:placeholder="Mot de passe" styleClass="form-control" value="#{user.pwd}" required="true" requiredMessage="Le Mot de passe est nécessaire">
+	    </p:password>
+          
+          <label class="checkbox">
+            
+            <span class="pull-right">
+            <a data-toggle="modal" href="login.html#myModal"></a>
+            </span>
+            </label>
+            <br/>
+            <h:commandButton action="#{user.VerifAuth()}" value="SE CONNECTER"  class="btn btn-theme btn-block"></h:commandButton>
+          
+          <hr/>
+    
+        </div>
+        <!-- Modal -->
+        
+        <!-- modal -->
+      </h:form>
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+  <script>
+    $.backstretch("img/k.jpg", {
+      speed: 500
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui" >
+
+<head>
+<link rel="stylesheet" href="../csss/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../csss/bootstrap.css"/>
+        <link rel="stylesheet" href="../csss/style1.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+ 
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content=""/>
+  <meta name="author" content="Dashboard"/>
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"/>
+  <title>GESTION--PROJET</title>
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon"/>
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon"/>
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="css/style-responsive.css" rel="stylesheet"/>
+</head>
+
+<body>
+  <section id="container">
+  <header class="header black-bg">
+   <div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+   </div>
+  <a class="logo"><p style="font-size: 23px ;padding-top: 15px ; font-family: fantasy">Gestion de<span>
+						Projet</span></p></a>
+	<div class="top-menu">
+	  <ul class="nav pull-right top-menu">
+	    <li><a class="logout" href="login.xhtml">Déconnexion</a></li>
+	  </ul>
+	</div>
+  </header>
+	<aside>
+      <div id="sidebar" class="nav-collapse ">
+		<ul class="sidebar-menu" id="nav-accordion">
+		 <li class="mt"><img src="images/icons8-gestion-de-projet-50.png" style="padding-left: 65px" />
+			<h4 style="color: #bdb8b5; padding-left: 15px">#{user.username}</h4>
+		</li>
+		<li class="mt">
+		 <a href="acc1.xhtml">
+        <i class="fa fa-dashboard"></i>
+            <span style="font-size: 18px ; font-family: New Time">Accueil</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="users.xhtml">
+              <i class="fa fa-group"></i>
+              <span style="font-size: 18px ; font-family: New Time">Utilisateurs</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="projets.xhtml">
+              <i class="fa fa-th-list"></i>
+              <span style="font-size: 18px ; font-family: New Time">Projets</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="materiels.xhtml">
+              <i class="fa fa-wrench"></i>
+              <span style="font-size: 18px ; font-family: New Time">Stock</span>
+              </a></li>
+				</ul>
+			</div>
+   </aside>
+      <section id="main-content">
+      <section class="wrapper site-min-height">
+         <nav class="navbar navbar-expand-lg navbar-fluid" style="background-color: #2f3b3a; margin-top: 30px; height: 50px;margin-left: 400px; margin-right:400px;">
+    <h4 style="color:#e4edec;padding-left: 10px ;padding-top: 4px"><h:outputText value=" Créer un nouveau matériel" style="font-size: 19px; font-family : Verdana" /></h4>
+  </nav>
+  <div class="jumbotron jumbotron-fluid" style="margin-left: 400px; margin-right: 400px; background-color: #f7fcfc;">
+    <h:form style="margin-left: 80px; margin-right: 80px;">
+     <div class="form-group">
+       <label for="exampleInputEmail1"><h:outputText value=" Nom :" style="color : black; font-size: 15px;" /></label>
+        <p:inputText a:placeholder="Nom" styleClass="form-control" id="name" value="#{mat.materiel.nom}"/>
+     </div>
+     <div class="form-group">
+       <label for="exampleInputEmail1"><h:outputText value=" Unité :" style="color : black; font-size: 15px;" /></label>
+        <p:inputText a:placeholder="Unite" styleClass="form-control" id="Unite" value="#{mat.materiel.unite}"/>
+     </div>
+     <div class="form-group">
+       <label for="exampleInputEmail1"><h:outputText value=" Prix :" style="color : black; font-size: 15px;" /></label>
+        <p:inputText a:placeholder="Prix" styleClass="form-control" id="Prix" value="#{mat.materiel.prix}"/>
+     </div>
+     <div class="form-group">
+       <label for="exampleInputEmail1"><h:outputText value=" Quantité :" style="color : black; font-size: 15px;" /></label>
+        <p:inputText a:placeholder="Prix" styleClass="form-control" id="Quantite" value="#{mat.materiel.quant}"/>
+     </div>
+     <div class="form-group">
+       <label for="exampleInputEmail1"><h:outputText value=" Fournisseur :" style="color : black; font-size: 15px;" /></label>
+      <h:selectOneMenu value="#{mat.materiel.fournisseur}" class="form-control" id="exampleFormControlSelect1">
+       <f:selectItems value="#{mat.getAllFou()}" var="fo" itemValue ="#{mat.fournisseur}" itemLabel="#{mat.fournisseur}" />
+    </h:selectOneMenu>
+    </div>
+     <h:commandButton value="Annuler" type="reset"
+									class="btn btn-theme04" style="margin-right: 230px;margin-top:30px" />
+    <h:commandButton style="font-size: 15px;margin-top:30px" value="Ajouter" id="ajout" action="#{mat.saveM()}" class="btn btn-primary float-right"/>
+   
+    
+ </h:form>
+  </div>
+  
+  
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    
+     
+    
+    
+    
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+           Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        <a href="blank.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="lib/jquery.ui.touch-punch.min.js"></script>
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="lib/jquery.scrollTo.min.js"></script>
+  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script src="lib/common-scripts.js"></script>
+  <!--script for this page-->
+ <script src="../js/bootstrap.min.js"></script> 
+  <script src="../jquery/jquery.min.js"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+	<link rel="stylesheet" type="text/css"
+		href="lib/gritter/css/jquery.gritter.css" />
+	<link rel="stylesheet" href="../csss/bootstrap.min.css" />
+	<link rel="stylesheet" href="../csss/bootstrap.css" />
+	<link rel="stylesheet" href="../csss/style1.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="Dashboard" />
+	<meta name="keyword"
+		content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+	<title>GESTION--PROJET</title>
+	<link href="img/favicon.png" rel="icon" />
+	<link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/style-responsive.css" rel="stylesheet" />
+	<style>
+.green {
+	color: green;
+	font-size: 15px;
+}
+
+#centerpoint {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+}
+
+#dialog {
+	position: relative;
+	width: 600px;
+	margin-left: -300px;
+	height: 400px;
+	margin-top: -200px;
+}
+</style>
+
+</h:head>
+
+<body>
+ <section id="container">
+  <header class="header black-bg">
+   <div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+   </div>
+   <a class="logo"><p style="font-size: 23px ;padding-top: 15px ; font-family: fantasy">Gestion de<span>
+						Projet</span></p></a>
+	<div class="top-menu">
+	  <ul class="nav pull-right top-menu">
+	    <li><a class="logout" href="login.xhtml">Déconnexion</a></li>
+	  </ul>
+	</div>
+  </header>
+	<aside>
+      <div id="sidebar" class="nav-collapse ">
+		<ul class="sidebar-menu" id="nav-accordion">
+		 <li class="mt"><img src="images/icons8-gestion-de-projet-50.png" style="padding-left: 65px" />
+			<h4 style="color: #bdb8b5; padding-left: 15px">#{user.username}</h4>
+		</li>
+		<li class="mt">
+		 <a href="acc1.xhtml">
+        <i class="fa fa-dashboard"></i>
+            <span style="font-size: 18px ; font-family: New Time">Accueil</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="users.xhtml">
+              <i class="fa fa-group"></i>
+              <span style="font-size: 18px ; font-family: New Time">Utilisateurs</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="projets.xhtml">
+              <i class="fa fa-th-list"></i>
+              <span style="font-size: 18px ; font-family: New Time">Projets</span>
+              </a>
+          </li>
+          <li class="mt">
+            <a href="materiels.xhtml">
+              <i class="fa fa-wrench"></i>
+              <span style="font-size: 18px ; font-family: New Time">Stock</span>
+              </a></li>
+				</ul>
+			</div>
+   </aside>
+   
+	<section id="main-content">
+	  <section class="wrapper site-min-height">
+		<nav class="navbar navbar-expand-lg navbar-fluid"
+			style="background-color: #3b4a49; margin-top: 30px; height: 50px; margin-left: 40px; margin-right: 40px;">
+		 <div class="col-lg-4">
+			<h4 class="tx" style="color: #e4edec;"><i class="fa fa-angle-right" style="font-size: 20px;"></i> <h:outputText value=" Liste des projets" style="font-size: 20px; font-family : Verdana" /></h4>
+		 </div>
+	    </nav>
+       <div class="container-fluid items">
+		<div class="row">
+		  <div class="table-responsive">
+			<div>
+			  <ul class="nav pull-center">
+				<li><a href="ajouterp.xhtml#"><h:commandButton style="font-size: 15px ; color :white" value="Ajouter"
+					class="btn-B"></h:commandButton> </a></li>
+			  </ul>
+             </div>
+			 <br />
+	<h:form>
+	 <h:dataTable value="#{project.getAllProj()}" var="projet"
+	   class="table table-bordered table-condensed table-body-center table-hover table-striped">
+	  <h:column class="thd">
+		<f:facet name="header">
+		  <h:outputText value=" Nom" style="color : black; font-size: 15px;" />
+	    </f:facet>
+        <h:outputText value="#{projet.nom}" style="color : black; font-size: 13px;" />
+     </h:column>
+	 <h:column class="thd">
+	   <f:facet name="header">
+		<h:outputText value=" Date début" style="color : black; font-size: 15px;" />
+	   </f:facet>
+    <h:outputText value="#{projet.date_debut}" style="color : black; font-size: 13px;" />
+    </h:column>
+	<h:column class="thd">
+	  <f:facet name="header">
+	    <h:outputText value=" Date fin" style="color : black; font-size: 15px;" />
+	  </f:facet>
+    <h:outputText value="#{projet.date_fin}" style="color : black; font-size: 13px;" />
+    </h:column>
+	<h:column class="thd">
+	  <f:facet name="header">
+		<i class="fa fa-question-circle" style="color : black"></i>
+		 <h:outputText value=" Etat" style="color : black; font-size: 15px;" />
+	  </f:facet>
+    <h:outputText rendered="#{projet.status eq 'Terminer'}" value=" Terminer" styleClass="fa fa-circle green" />
+    <h:outputText rendered="#{projet.status eq 'Nouveau'}" value=" Nouveau" styleClass="fa fa-circle" style="color : red; font-size: 15px;" />
+    <h:outputText rendered="#{projet.status eq 'encours'}" value=" En cours" styleClass="fa fa-circle" style="color : orange; font-size: 15px;" />
+   </h:column>
+   <h:column class="thd">
+	<f:facet name="header">
+	 <i class="glyphicon glyphicon-user" style="color : black"></i>
+	 <h:outputText value=" Chef de Projet" style="color : black; font-size: 15px;" />
+	</f:facet>
+    <h:outputText value="#{projet.user.username}" style="color : black; font-size: 13px;" /> 
+  </h:column>
+  <h:column class="thd">
+	<f:facet name="header">
+	 <i class="fa fa-gears" style="color : black"></i>
+	<h:outputText value=" Action" style="color : black; font-size: 15px;" />
+   </f:facet>
+   <h:commandLink action="#{project.findProj2(projet.id_projet)}" styleClass="btn btn-info" title="Détails" value="" style="margin-right:15px;">
+	<i class="fa fa-list"></i>
+   </h:commandLink>
+  <h:commandLink action="#{project.deleteProj(projet.id_projet)}" styleClass="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')" value="" title="Supprimer">
+  <i class="fa fa-trash"></i>
+  </h:commandLink>
+  </h:column>
+  </h:dataTable>
+	</h:form>
+	</div>
+		</div>
+		  </div>
+          </section>
+		</section>
+    <footer class="site-footer">
+			<div class="text-center">
+				<p>
+					Copyrights <strong>GESTION--PROJET</strong>. All Rights Reserved
+				</p>
+				<div class="credits">
+					Created by :<a href="https://templatemag.com/">El alaoui
+						Hassnae @SMI</a>
+				</div>
+				<a href="blank.html#" class="go-top"> <i class="fa fa-angle-up"></i>
+				</a>
+			</div>
+		</footer>
+		<!--footer end-->
+	</section>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="lib/jquery.ui.touch-punch.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script src="lib/jquery.scrollTo.min.js"></script>
+	<script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+	<!--common script for all pages-->
+	<script src="lib/common-scripts.js"></script>
+	<!--script for this page-->
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript" src="lib/gritter-conf.js"></script>
+
+	
+</body>
+
+</html>

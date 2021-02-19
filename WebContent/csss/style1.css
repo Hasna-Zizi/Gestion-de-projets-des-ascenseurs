@@ -1,0 +1,40 @@
+.navbar {
+ 	 height: 90px;
+ }
+.nav-item{
+   font-size : 20px;
+   padding : 20px;
+   }
+   
+.nav-link{
+	color : #050505;}
+	
+.btn-B{
+	
+margin-left:500px;
+  display: block;
+  width: 10%;
+  border: none;
+  background-color:#4ECDC4;
+  padding: 10px 10px;
+  margin-top:5px;
+  margin-bottom:5px;
+  font-size: 10px;
+  
+  text-align: center;
+  border-radius: 12px;
+ }
+
+.thd{
+	margin-left: 20px;
+	border-color: #171716;
+	background-color:#e0d5ce;}
+.table-responsive{
+	margin-left: 40px;
+	margin-right:40px;
+	border-color: #171716;
+	width: 100%;
+}
+
+
+
